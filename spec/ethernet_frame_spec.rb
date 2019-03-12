@@ -9,18 +9,18 @@ RSpec.describe EthernetFrame do
   let(:frame_bytes) { File.binread(File.join(__dir__, 'fixtures/ethernet_frame.dat')).bytes }
   let(:ethernet_frame) { EthernetFrame.new(frame_bytes) }
 
-  example '#destination_mac' do
+  example 'returns the correct destination_mac' do
     expect(ethernet_frame.destination_mac).to eq('08:00:27:D7:47:6C')
   end
 
-  example '#source_mac' do
+  example 'returns the correct source_mac' do
     expect(ethernet_frame.source_mac).to eq('0A:00:27:00:00:00')
   end
 
-  describe '#ip_packet' do
+  describe 'returns the correct ip_packet' do
     let(:ip_packet) { ethernet_frame.ip_packet }
 
-    example '#version' do
+    example 'returns the correct ip version' do
       expect(ip_packet.version).to eq(4)
     end
 
