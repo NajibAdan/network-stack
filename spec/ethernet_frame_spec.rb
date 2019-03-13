@@ -52,34 +52,34 @@ RSpec.describe EthernetFrame do
       expect(ip_packet.fragment_offset).to eq(0)
     end
 
-    example '#time_to_live' do
+    example 'returns the correct time_to_live' do
       expect(ip_packet.time_to_live).to eq(64)
     end
 
-    example '#protocol' do
+    example 'returns the correct protocol' do
       expect(ip_packet.protocol).to eq(17)
     end
 
-    example '#header_checksum' do
+    example 'returns the expected header_checksum' do
       expect(ip_packet.header_checksum).to eq(0xD62C)
     end
 
-    example '#source_ip_address' do
+    example 'returns the correct source_ip_address' do
       expect(ip_packet.source_ip_address).to eq('192.168.33.1')
     end
 
-    example '#destination_ip_address' do
+    example 'returns the correct destination_ip_address' do
       expect(ip_packet.destination_ip_address).to eq('192.168.33.10')
     end
 
     describe '#udp_datagram' do
       let(:udp_datagram) { ip_packet.udp_datagram }
 
-      example '#source_port' do
+      example 'returns the correct source_port' do
         expect(udp_datagram.source_port).to eq(51_261)
       end
 
-      example '#destination_port' do
+      example 'returns the correct destination_port' do
         expect(udp_datagram.destination_port).to eq(4321)
       end
 
@@ -87,7 +87,7 @@ RSpec.describe EthernetFrame do
         expect(udp_datagram.length).to eq(14)
       end
 
-      example '#checksum' do
+      example 'correct checksum' do
         expect(udp_datagram.checksum).to eq(0x1F7B)
       end
 
