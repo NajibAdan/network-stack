@@ -36,7 +36,7 @@ RSpec.describe EthernetFrame do
       expect(ip_packet.ecn).to eq(0)
     end
 
-    example '#total_length' do
+    example 'returns the correct total_length' do
       expect(ip_packet.total_length).to eq(34)
     end
 
@@ -44,7 +44,7 @@ RSpec.describe EthernetFrame do
       expect(ip_packet.identification).to eq(0xE142)
     end
 
-    example '#flags' do
+    example 'returns the proper flags' do
       expect(ip_packet.flags).to eq(0)
     end
 
@@ -83,7 +83,7 @@ RSpec.describe EthernetFrame do
         expect(udp_datagram.destination_port).to eq(4321)
       end
 
-      example '#length' do
+      example 'returns the correct length' do
         expect(udp_datagram.length).to eq(14)
       end
 
@@ -91,7 +91,7 @@ RSpec.describe EthernetFrame do
         expect(udp_datagram.checksum).to eq(0x1F7B)
       end
 
-      example 'body' do
+      example 'returns the correct body message' do
         expect(udp_datagram.body).to eq("hello\n")
       end
     end
